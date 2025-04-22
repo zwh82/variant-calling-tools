@@ -3,21 +3,21 @@ Summary of various variant calling tools.
 
 ## tools
 
-### DeepVariant 
+### ~~DeepVariant~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2018 | NGS/hifi/ONT R10/hybrid hifi + NGS | SNP and small-indel | https://github.com/google/deepvariant | a reference fasta, a bam for deepvariant/a reference fasta, normal and tumor bams | vcf/gvcf | 
 
-**Description:** DeepVariant currently supports variant calling on organisms where the ploidy/copy-number is two. / It also adapted DeepVariant for **somatic calling**. See the [DeepSomatic](https://github.com/google/deepsomatic) repo for details. DeepSomatic supports somatic variant-calling from tumor-normal and tumor-only sequencing data. / Multi-sample calls. 
+**Description:** DeepVariant currently supports variant calling on organisms where the **ploidy/copy-number is two**. / It also adapted DeepVariant for **somatic calling**. See the [DeepSomatic](https://github.com/google/deepsomatic) repo for details. DeepSomatic supports somatic variant-calling from tumor-normal and tumor-only sequencing data. / Multi-sample calls. 
 
-### longshot
+### ~~longshot~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2019 | pacbio/ont | SNV | https://github.com/pjedge/longshot | a reference fasta, a bam | vcf |
 
 **Description:** Longshot is a variant calling tool for **diploid** genomes using long error prone reads such as Pacific Biosciences (PacBio) SMRT and Oxford Nanopore Technologies (ONT). It takes as input an aligned BAM/CRAM file and outputs a phased VCF file with variants and haplotype information. It can also genotype and phase input VCF files. It can output haplotype-separated BAM files that can be used for downstream analysis. Currently, it only calls single nucleotide variants (SNVs), but it can genotype indels if they are given in an input VCF.
 
-### GATK MuTect2 
+### GATK MuTect2*
 
 https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2
 
@@ -25,8 +25,8 @@ https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2
 
 Does-GATK-work-on-non-diploid-organisms: https://gatk.broadinstitute.org/hc/en-us/articles/360035889691-Does-GATK-work-on-non-diploid-organisms
 
-### Sentieon 
-**Description:** Paid, faster than GATK, but GATK is still the most widely recognized call variant software in the industry
+### ~~Sentieon~~
+**Description:** Paid (not free), faster than GATK, but GATK is still the most widely recognized call variant software in the industry
 
 ### NeuSomatic
 | time | sequencing type | variant type | where | input | output | 
@@ -42,7 +42,7 @@ Does-GATK-work-on-non-diploid-organisms: https://gatk.broadinstitute.org/hc/en-u
 
 **Description:** The advent of massively parallel sequencing technologies has fundamentally changed the study of genetics. New platforms like the Illumina HiSeq2000 yield unprecedented levels of sequencing throughput. The analysis and interpretation of data from next-generation sequencing (NGS) platforms presents a substantial informatics challenge. VarScan is a platform-independent software tool developed at the Genome Institute at Washington University to detect variants in NGS data. Maybe it need high coverage data.
 
-### Strelka2 
+### ~~Strelka2~~ 
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2018 | NGS | small variant: SNPs/indels | https://github.com/Illumina/strelka | normal bam and tumor bam and reference fasta | vcf |
@@ -63,12 +63,12 @@ Does-GATK-work-on-non-diploid-organisms: https://gatk.broadinstitute.org/hc/en-u
 
 **Description:** UVC is a very accurate and reasonably fast somatic variant caller. The executable uvc1 in the bin directory takes one BAM file as input and generates one block-gzipped VCF file as output. The script uvcTN.sh in the bin directory takes two BAM files corresponding to tumor and normal as input and generate two block-gzipped VCF files (tumor-variant VCF and normal-filtered VCF) as output.
 
-### SomaticSniper
+### ~~SomaticSniper~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2012 | NGS | SNV | https://github.com/genome/somatic-sniper | normal bam and tumor bam |  |
 
-**Description:** The purpose of this program is to identify single nucleotide positions that are different between tumor and normal (or in theory, any two bam files). It takes a tumor bam and a normal bam and compares the two to determine the differences. It need 25-30x.
+**Description:** The purpose of this program is to identify single nucleotide positions that are different between tumor and normal (or in theory, any two bam files). It takes a tumor bam and a normal bam and compares the two to determine the differences. It need 25-30x (maybe too high).
 
 ### VarDict
 | time | sequencing type | variant type | where | input | output | 
@@ -134,38 +134,38 @@ This is a Oxford Nanopore's Basecaller but it seems to be able to perform varian
 |--------|--------|--------| --------| --------| --------|
 | 2021 | long | SNPs/indels | https://github.com/WGLab/NanoCaller | bam, reference fasta | vcf |
 
-**Description:** NanoCaller is a computational method that integrates long reads in deep convolutional neural network for the detection of SNPs/indels from long-read sequencing data. NanoCaller uses long-range haplotype structure to generate predictions for each SNP candidate variant site by considering pileup information of other candidate sites sharing reads. Subsequently, it performs read phasing, and carries out local realignment of each set of phased reads and the set of all reads for each indel candidate variant site to generate indel calling, and then creates consensus sequences for indel sequence prediction. This method is also based on deep learning. Although some people have attempted to use this method for bacteria on GitHub, the author also replied that it is only being tested in diploid, which I think may not be suitable for bacteria.
+**Description:** NanoCaller is a computational method that integrates long reads in deep convolutional neural network for the detection of SNPs/indels from long-read sequencing data. NanoCaller uses long-range haplotype structure to generate predictions for each SNP candidate variant site by considering pileup information of other candidate sites sharing reads. Subsequently, it performs read phasing, and carries out local realignment of each set of phased reads and the set of all reads for each indel candidate variant site to generate indel calling, and then creates consensus sequences for indel sequence prediction. This method is also based on deep learning. **Although some people have attempted to use this method for bacteria on GitHub, the author also replied that it is only being tested in diploid, which I think may not be suitable for bacteria.**
 
-### ska lo(SKA)
+### ska lo(SKA)**
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2024 | NGS | SNPs(main)/indels | https://github.com/bacpop/ska.rust | reference fasta(optional), fastq | vcf |
 
 **Description:** Reference-Free Variant Calling with Local Graph Construction. **All experiments are applied to strain analysis**。
 
-### Snippy
+### Snippy*
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2015(no paper) | NGS | SNPs/indels | https://github.com/tseemann/snippy | reference fasta, fastq | vcf |
 
 **Description:** Snippy finds SNPs between a haploid reference genome and your NGS sequence reads. It will find both substitutions (snps) and insertions/deletions (indels). It will use as many CPUs as you can give it on a single computer (tested to 64 cores). It is designed with speed in mind, and produces a consistent set of output files in a single folder. It can then take a set of Snippy results using the same reference and generate a core SNP alignment (and ultimately a phylogenomic tree).
 
-### sawfish
+### ~~sawfish~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2025 | hifi | SV |
 
-### Sniffles2
+### ~~Sniffles2~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2025 | hifi/ONT | SV |
 
-### pbsv
+### ~~pbsv~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2018(no paper) | pacbio | SV | https://github.com/PacificBiosciences/pbsv |
 
-### Severus
+### ~~Severus~~
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2025 | long | SV | https://github.com/KolmogorovLab/Severus |
