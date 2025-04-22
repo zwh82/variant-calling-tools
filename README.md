@@ -63,7 +63,66 @@ Does-GATK-work-on-non-diploid-organisms: https://gatk.broadinstitute.org/hc/en-u
 
 **Description:** UVC is a very accurate and reasonably fast somatic variant caller. The executable uvc1 in the bin directory takes one BAM file as input and generates one block-gzipped VCF file as output. The script uvcTN.sh in the bin directory takes two BAM files corresponding to tumor and normal as input and generate two block-gzipped VCF files (tumor-variant VCF and normal-filtered VCF) as output.
 
-### Clair3
+### SomaticSniper
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2012 | NGS | SNV | https://github.com/genome/somatic-sniper | normal bam and tumor bam |  |
+
+**Description:** The purpose of this program is to identify single nucleotide positions that are different between tumor and normal (or in theory, any two bam files). It takes a tumor bam and a normal bam and compares the two to determine the differences. It need 25-30x.
+
+### VarDict
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2016 | NGS | SNVs/indels | https://github.com/AstraZeneca-NGS/VarDict | bam |
+
+**Description:** VarDict is an ultra sensitive variant caller for both single and paired sample variant calling from BAM files. VarDict implements several novel features such as amplicon bias aware variant calling from targeted sequencing experiments, rescue of long indels by realigning bwa soft clipped reads and better scalability than many Java based variant callers.
+
+### FreeBayes*
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2012 | NGS | SNPs/indels | https://github.com/freebayes/freebayes | bam, reference fasta | vcf |
+
+**Description:** freebayes is a Bayesian genetic variant detector designed to find small polymorphisms, specifically SNPs (single-nucleotide polymorphisms), indels (insertions and deletions), MNPs (multi-nucleotide polymorphisms), and complex events (composite insertion and substitution events) smaller than the length of a short-read sequencing alignment. Continuous updates. It seem to be related to haplotypes, and I think we can give it a try.
+
+### LoFreq*
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2012 | NGS | SNVs/indels | https://github.com/andreas-wilm/lofreq3 | bam, reference fasta | vcf |
+
+**Description:** LoFreq was originally developed as a quality-aware low-frequency variant caller. **The main design goal was to find rare variants caused by haplotypes in viral or bacterial populations.** Because it's quality aware, it is also largely parameter free and applicable to many sequencing technologies, assuming that the qualities are actually meaningful and translate into error probabilities and are calibrated. This assumption is not entirely true for example for mapping qualities (see Lee et al. 2014). Another simplifying assumption is that all qualities (base-qualities, indel-qualities, mapping-qualities and alignment qualities) are independent. LoFreq merges all these qualities into one error probability and predict variants based on a poission-binomial distribution. This allows us to assign meaningful qualities to variants, which actually translate into the probability that a variant was called by chance.
+
+### MutScan*
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2018 | NGS | SNVs/indels | https://github.com/OpenGene/MutScan | fastq, reference fasta | vcf |
+
+**Description:** Detect and visualize target mutations by scanning FastQ files directly.
+
+### Indelocator
+
+### Pindel
+
+### MuSE*
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2024(version 2) | NGS | SNVs | https://github.com/wwylab/MuSE | bam, reference fasta | vcf |
+
+**Description:** An accurate and ultra-fast somatic mutation calling tool for whole-genome sequencing (WGS) and whole-exome sequencing (WES) data from heterogeneous tumor samples. This tool is unique in accounting for tumor heterogeneity using a sample-specific error model that improves sensitivity and specificity in mutation calling from sequencing data.
+
+### pepper*
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2021 | ONT | small variants | https://github.com/kishwarshafin/pepper | bam, reference fasta | vcf |
+
+**Description:** PEPPER is a genome inference module based on recurrent neural networks that enables long-read variant calling and nanopore assembly polishing in the PEPPER-Margin-DeepVariant pipeline. This pipeline enables nanopore-based variant calling with DeepVariant.
+
+### dorado*
+https://github.com/nanoporetech/dorado?tab=readme-ov-file#variant-calling
+
+This is a Oxford Nanopore's Basecaller but it seems to be able to perform variant calling.
+
+
+### Clair3*
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
 | 2022 | short/long | SNPs/indels | https://github.com/HKU-BAL/Clair3 | bam, reference fasta | vcf |
