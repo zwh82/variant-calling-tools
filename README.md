@@ -136,6 +136,13 @@ This is a Oxford Nanopore's Basecaller but it seems to be able to perform varian
 
 **Description:** NanoCaller is a computational method that integrates long reads in deep convolutional neural network for the detection of SNPs/indels from long-read sequencing data. NanoCaller uses long-range haplotype structure to generate predictions for each SNP candidate variant site by considering pileup information of other candidate sites sharing reads. Subsequently, it performs read phasing, and carries out local realignment of each set of phased reads and the set of all reads for each indel candidate variant site to generate indel calling, and then creates consensus sequences for indel sequence prediction. This method is also based on deep learning. **Although some people have attempted to use this method for bacteria on GitHub, the author also replied that it is only being tested in diploid, which I think may not be suitable for bacteria.**
 
+### miniSNV
+| time | sequencing type | variant type | where | input | output | 
+|--------|--------|--------| --------| --------| --------|
+| 2024 | ONT | SNVs | https://github.com/CuiMiao-HIT/miniSNV | bam, reference fasta | vcf |
+
+**Description:** miniSNV is a lightweight SNV calling algorithm that simultaneously achieves high performance and yield. miniSNV takes the known common variants in the population as variation backgrounds and leverages read pileup, read-based phasing, and consensus generation to discover and genotype SNVs for ONT long reads. Benchmarks on real ONT datasets under various error profiles demonstrate that miniSNV has superior sensitivity and comparable accuracy on SNV detection and runs faster with outstanding scaling performance and lower memory than most state-of-the-art variant callers. It need WhatsHap to perform phasing, it seems to assume that the sample ploidy is determined.
+
 ### ska lo(SKA)**
 | time | sequencing type | variant type | where | input | output | 
 |--------|--------|--------| --------| --------| --------|
